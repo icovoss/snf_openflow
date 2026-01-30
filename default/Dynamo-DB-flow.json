@@ -1,0 +1,11 @@
+{
+  "flow" : {
+    "createdTimestamp" : 1769771326757,
+    "description" : "Group for the Dynomo DB flow",
+    "identifier" : "Dynamo-DB-flow",
+    "lastModifiedTimestamp" : 1769771326757,
+    "name" : "Dynamo DB flow",
+    "versionCount" : 0
+  },
+  "latest" : false
+}
