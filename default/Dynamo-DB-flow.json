@@ -1,5 +1,10 @@
 {
-  "externalControllerServices" : { },
+  "externalControllerServices" : {
+    "6ca65db0-1277-377e-91aa-84fbedd291c2" : {
+      "identifier" : "6ca65db0-1277-377e-91aa-84fbedd291c2",
+      "name" : "AWSCredentialsProviderControllerService"
+    }
+  },
   "flow" : {
     "createdTimestamp" : 1769771326757,
     "description" : "Group for the Dynomo DB flow",
@@ -11,16 +16,127 @@
   "flowContents" : {
     "comments" : "",
     "componentType" : "PROCESS_GROUP",
-    "connections" : [ ],
+    "connections" : [ {
+      "backPressureDataSizeThreshold" : "1 GB",
+      "backPressureObjectThreshold" : 10000,
+      "bends" : [ ],
+      "componentType" : "CONNECTION",
+      "destination" : {
+        "comments" : "",
+        "groupId" : "flow-contents-group",
+        "id" : "42535285-2ec5-3efd-ac59-38780734d767",
+        "name" : "Funnel",
+        "type" : "FUNNEL"
+      },
+      "flowFileExpiration" : "0 sec",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "9c746c2a-5104-3d8d-a488-3867e9963a99",
+      "labelIndex" : 0,
+      "loadBalanceCompression" : "DO_NOT_COMPRESS",
+      "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+      "name" : "",
+      "partitioningAttribute" : "",
+      "prioritizers" : [ ],
+      "selectedRelationships" : [ "success" ],
+      "source" : {
+        "comments" : "",
+        "groupId" : "flow-contents-group",
+        "id" : "41414605-8e03-387d-ffff-ffffd0f4bdf0",
+        "name" : "GetDynamoDB",
+        "type" : "PROCESSOR"
+      },
+      "zIndex" : 2
+    }, {
+      "backPressureDataSizeThreshold" : "1 GB",
+      "backPressureObjectThreshold" : 10000,
+      "bends" : [ ],
+      "componentType" : "CONNECTION",
+      "destination" : {
+        "comments" : "",
+        "groupId" : "flow-contents-group",
+        "id" : "41414605-8e03-387d-ffff-ffffd0f4bdf0",
+        "name" : "GetDynamoDB",
+        "type" : "PROCESSOR"
+      },
+      "flowFileExpiration" : "0 sec",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "b3b381f0-36dd-3e7b-8117-cd55ab1f4f4f",
+      "labelIndex" : 0,
+      "loadBalanceCompression" : "DO_NOT_COMPRESS",
+      "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+      "name" : "",
+      "partitioningAttribute" : "",
+      "prioritizers" : [ ],
+      "selectedRelationships" : [ "success" ],
+      "source" : {
+        "comments" : "",
+        "groupId" : "flow-contents-group",
+        "id" : "44d4c45f-bd29-35fc-ffff-ffffc6aca7d4",
+        "name" : "GenerateFlowFile",
+        "type" : "PROCESSOR"
+      },
+      "zIndex" : 1
+    }, {
+      "backPressureDataSizeThreshold" : "1 GB",
+      "backPressureObjectThreshold" : 10000,
+      "bends" : [ ],
+      "componentType" : "CONNECTION",
+      "destination" : {
+        "comments" : "",
+        "groupId" : "flow-contents-group",
+        "id" : "f89d4835-9fd7-3d62-be53-92559af2309d",
+        "name" : "Funnel",
+        "type" : "FUNNEL"
+      },
+      "flowFileExpiration" : "0 sec",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "e958248a-64ef-392f-a800-f80b06f3b378",
+      "labelIndex" : 0,
+      "loadBalanceCompression" : "DO_NOT_COMPRESS",
+      "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+      "name" : "",
+      "partitioningAttribute" : "",
+      "prioritizers" : [ ],
+      "selectedRelationships" : [ "failure", "not found", "unprocessed" ],
+      "source" : {
+        "comments" : "",
+        "groupId" : "flow-contents-group",
+        "id" : "41414605-8e03-387d-ffff-ffffd0f4bdf0",
+        "name" : "GetDynamoDB",
+        "type" : "PROCESSOR"
+      },
+      "zIndex" : 3
+    } ],
     "controllerServices" : [ ],
     "defaultBackPressureDataSizeThreshold" : "1 GB",
     "defaultBackPressureObjectThreshold" : 10000,
     "defaultFlowFileExpiration" : "0 sec",
     "executionEngine" : "INHERITED",
-    "externalControllerServiceReferences" : { },
+    "externalControllerServiceReferences" : {
+      "6ca65db0-1277-377e-91aa-84fbedd291c2" : {
+        "identifier" : "6ca65db0-1277-377e-91aa-84fbedd291c2",
+        "name" : "AWSCredentialsProviderControllerService"
+      }
+    },
     "flowFileConcurrency" : "UNBOUNDED",
     "flowFileOutboundPolicy" : "STREAM_WHEN_AVAILABLE",
-    "funnels" : [ ],
+    "funnels" : [ {
+      "componentType" : "FUNNEL",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "42535285-2ec5-3efd-ac59-38780734d767",
+      "position" : {
+        "x" : 56.0,
+        "y" : -368.0
+      }
+    }, {
+      "componentType" : "FUNNEL",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "f89d4835-9fd7-3d62-be53-92559af2309d",
+      "position" : {
+        "x" : 40.0,
+        "y" : 152.0
+      }
+    } ],
     "identifier" : "flow-contents-group",
     "inputPorts" : [ ],
     "labels" : [ ],
@@ -32,7 +148,255 @@
       "y" : 0.0
     },
     "processGroups" : [ ],
-    "processors" : [ ],
+    "processors" : [ {
+      "autoTerminatedRelationships" : [ ],
+      "backoffMechanism" : "PENALIZE_FLOWFILE",
+      "bulletinLevel" : "DEBUG",
+      "bundle" : {
+        "artifact" : "nifi-aws-nar",
+        "group" : "org.apache.nifi",
+        "version" : "2026.1.29.23"
+      },
+      "comments" : "",
+      "componentType" : "PROCESSOR",
+      "concurrentlySchedulableTaskCount" : 1,
+      "executionNode" : "ALL",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "41414605-8e03-387d-ffff-ffffd0f4bdf0",
+      "maxBackoffPeriod" : "10 mins",
+      "name" : "GetDynamoDB",
+      "penaltyDuration" : "30 sec",
+      "position" : {
+        "x" : -336.0,
+        "y" : -144.0
+      },
+      "properties" : {
+        "Table Name" : "ORDERS",
+        "Hash Key Value Type" : "number",
+        "Hash Key Name" : "ORDER_ID",
+        "Range Key Name" : "MFG_PLANT_ID",
+        "AWS Credentials Provider Service" : "6ca65db0-1277-377e-91aa-84fbedd291c2",
+        "Range Key Value" : "1023",
+        "Communications Timeout" : "30 secs",
+        "Region" : "us-east-1",
+        "Json Document" : "doc_s",
+        "Batch Items Per Request" : "1",
+        "Hash Key Value" : "37",
+        "Range Key Value Type" : "string"
+      },
+      "propertyDescriptors" : {
+        "Table Name" : {
+          "displayName" : "Table Name",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Table Name",
+          "sensitive" : false
+        },
+        "Hash Key Value Type" : {
+          "displayName" : "Hash Key Value Type",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Hash Key Value Type",
+          "sensitive" : false
+        },
+        "Hash Key Name" : {
+          "displayName" : "Hash Key Name",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Hash Key Name",
+          "sensitive" : false
+        },
+        "Endpoint Override URL" : {
+          "displayName" : "Endpoint Override URL",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Endpoint Override URL",
+          "sensitive" : false
+        },
+        "Range Key Name" : {
+          "displayName" : "Range Key Name",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Range Key Name",
+          "sensitive" : false
+        },
+        "Proxy Configuration Service" : {
+          "displayName" : "Proxy Configuration Service",
+          "dynamic" : false,
+          "identifiesControllerService" : true,
+          "name" : "Proxy Configuration Service",
+          "sensitive" : false
+        },
+        "SSL Context Service" : {
+          "displayName" : "SSL Context Service",
+          "dynamic" : false,
+          "identifiesControllerService" : true,
+          "name" : "SSL Context Service",
+          "sensitive" : false
+        },
+        "AWS Credentials Provider Service" : {
+          "displayName" : "AWS Credentials Provider Service",
+          "dynamic" : false,
+          "identifiesControllerService" : true,
+          "name" : "AWS Credentials Provider Service",
+          "sensitive" : false
+        },
+        "Range Key Value" : {
+          "displayName" : "Range Key Value",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Range Key Value",
+          "sensitive" : false
+        },
+        "Communications Timeout" : {
+          "displayName" : "Communications Timeout",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Communications Timeout",
+          "sensitive" : false
+        },
+        "Region" : {
+          "displayName" : "Region",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Region",
+          "sensitive" : false
+        },
+        "Json Document" : {
+          "displayName" : "Json Document",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Json Document",
+          "sensitive" : false
+        },
+        "Batch Items Per Request" : {
+          "displayName" : "Batch Items Per Request",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Batch Items Per Request",
+          "sensitive" : false
+        },
+        "Hash Key Value" : {
+          "displayName" : "Hash Key Value",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Hash Key Value",
+          "sensitive" : false
+        },
+        "Range Key Value Type" : {
+          "displayName" : "Range Key Value Type",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Range Key Value Type",
+          "sensitive" : false
+        },
+        "Custom Region" : {
+          "displayName" : "Custom Region",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Custom Region",
+          "sensitive" : false
+        }
+      },
+      "retriedRelationships" : [ ],
+      "retryCount" : 10,
+      "runDurationMillis" : 0,
+      "scheduledState" : "ENABLED",
+      "schedulingPeriod" : "0 sec",
+      "schedulingStrategy" : "TIMER_DRIVEN",
+      "style" : { },
+      "type" : "org.apache.nifi.processors.aws.dynamodb.GetDynamoDB",
+      "yieldDuration" : "1 sec"
+    }, {
+      "autoTerminatedRelationships" : [ ],
+      "backoffMechanism" : "PENALIZE_FLOWFILE",
+      "bulletinLevel" : "WARN",
+      "bundle" : {
+        "artifact" : "nifi-standard-nar",
+        "group" : "org.apache.nifi",
+        "version" : "2026.1.29.23"
+      },
+      "comments" : "",
+      "componentType" : "PROCESSOR",
+      "concurrentlySchedulableTaskCount" : 1,
+      "executionNode" : "ALL",
+      "groupIdentifier" : "flow-contents-group",
+      "identifier" : "44d4c45f-bd29-35fc-ffff-ffffc6aca7d4",
+      "maxBackoffPeriod" : "10 mins",
+      "name" : "GenerateFlowFile",
+      "penaltyDuration" : "30 sec",
+      "position" : {
+        "x" : -880.0,
+        "y" : -144.0
+      },
+      "properties" : {
+        "File Size" : "0B",
+        "Batch Size" : "1",
+        "Unique FlowFiles" : "false",
+        "Character Set" : "UTF-8",
+        "Data Format" : "Text"
+      },
+      "propertyDescriptors" : {
+        "File Size" : {
+          "displayName" : "File Size",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "File Size",
+          "sensitive" : false
+        },
+        "Batch Size" : {
+          "displayName" : "Batch Size",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Batch Size",
+          "sensitive" : false
+        },
+        "Unique FlowFiles" : {
+          "displayName" : "Unique FlowFiles",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Unique FlowFiles",
+          "sensitive" : false
+        },
+        "Mime Type" : {
+          "displayName" : "Mime Type",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Mime Type",
+          "sensitive" : false
+        },
+        "Custom Text" : {
+          "displayName" : "Custom Text",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Custom Text",
+          "sensitive" : false
+        },
+        "Character Set" : {
+          "displayName" : "Character Set",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Character Set",
+          "sensitive" : false
+        },
+        "Data Format" : {
+          "displayName" : "Data Format",
+          "dynamic" : false,
+          "identifiesControllerService" : false,
+          "name" : "Data Format",
+          "sensitive" : false
+        }
+      },
+      "retriedRelationships" : [ ],
+      "retryCount" : 10,
+      "runDurationMillis" : 0,
+      "scheduledState" : "ENABLED",
+      "schedulingPeriod" : "1 min",
+      "schedulingStrategy" : "TIMER_DRIVEN",
+      "style" : { },
+      "type" : "org.apache.nifi.processors.standard.GenerateFlowFile",
+      "yieldDuration" : "1 sec"
+    } ],
     "remoteProcessGroups" : [ ],
     "scheduledState" : "ENABLED",
     "statelessFlowTimeout" : "1 min"
@@ -44,6 +408,6 @@
   "snapshotMetadata" : {
     "author" : "OVOSS",
     "flowIdentifier" : "Dynamo-DB-flow",
-    "timestamp" : 1769771327633
+    "timestamp" : 1769772145628
   }
 }
